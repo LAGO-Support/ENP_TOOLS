@@ -1,6 +1,12 @@
 function D04_generate_BC2D_H()
 
 % -------------------------------------------------------------------------
+% -------------------------------------------------------------------------
+% BEGIN USER INPUT
+% -------------------------------------------------------------------------
+% -------------------------------------------------------------------------
+
+% -------------------------------------------------------------------------
 % Set paths to directories and files
 % -------------------------------------------------------------------------
  
@@ -9,19 +15,20 @@ INI.OLorSZ = 'SZ';
 %INI.OLorSZ = 'OL';
 
 % Input directories and files:
-INI.INPUT_DIR  = ['./../../ENP_TOOLS_Sample_Input/'];
-INI.GIS        = [INI.INPUT_DIR 'Obs_Data_Processed/BC2D_GIS/'];
-INI.STAGE_DIR  = [INI.INPUT_DIR 'Obs_Data_Processed/STAGE/'];
+
+INI.INPUT_DIR  = '../../ENP_FILES/ENP_TOOLS_Sample_Input/'; % use these for unit testing
+INI.GIS        = [INI.INPUT_DIR 'Obs_Data_Processed/BC2D_GIS/']; % use these for unit testing
+INI.STAGE_DIR  = [INI.INPUT_DIR 'Obs_Data_Processed/STAGE_for_BC2D/']; % use these for unit testing
 
 % Output directory and file:
-INI.BC2D_DIR   = [INI.INPUT_DIR 'Obs_Data_Processed/BC2D/'];
+INI.BC2D_DIR   = '../../ENP_TOOLS_Output/D04_generate_BC2D_H/Obs_Data_Processed/BC2D/'; % use these for unit testing
 if ~exist(INI.BC2D_DIR, 'dir')
    mkdir(INI.BC2D_DIR)
 end
 
 if strcmpi(INI.OLorSZ,'OL')
 	INI.DELT = 3600;
-	INI.DIR_DATA   = [INI.INPUT_DIR 'Obs_Data_Processed/STAGE/DFS0HR/'];
+	INI.DIR_DATA   = [INI.INPUT_DIR 'Obs_Data_Processed/STAGE_for_BC2D/DFS0HR/']; % use these for unit testing
 	INI.XLSX                 = [INI.BC2D_DIR 'H_POINTS_HR.xlsx'];     % output
 	INI.DFS2                 = [INI.BC2D_DIR 'BC2D_H_OL.dfs2'];       % output
 	INI.OL_H_MATLAB          = [INI.BC2D_DIR 'OL_H.MATLAB'];          % output
@@ -32,7 +39,7 @@ if strcmpi(INI.OLorSZ,'OL')
 	INI.H_STATIONS_MATLAB = INI.OL_H_STATIONS_MATLAB; % hack to get OL and SZ in same script. fix later.
 elseif strcmpi(INI.OLorSZ,'SZ')
 	INI.DELT = 86400;
-	INI.DIR_DATA   = [INI.INPUT_DIR 'Obs_Data_Processed/STAGE/DFS0DD/'];
+	INI.DIR_DATA   = [INI.INPUT_DIR 'Obs_Data_Processed/STAGE_for_BC2D/DFS0DD/']; % use these for unit testing
 	INI.XLSX                 = [INI.BC2D_DIR 'H_POINTS_DD.xlsx'];     % output
 	INI.DFS2                 = [INI.BC2D_DIR 'BC2D_H_SZ.dfs2'];       % output
 	INI.SZ_H_MATLAB          = [INI.BC2D_DIR 'SZ_H.MATLAB'];          % output
@@ -93,6 +100,12 @@ INI.CREATE_FIGURES = 0;
 
 INI.DATE_I = '1/1/1999'; 
 INI.DATE_E = '12/31/2018'; 
+
+% -------------------------------------------------------------------------
+% -------------------------------------------------------------------------
+% END USER INPUT
+% -------------------------------------------------------------------------
+% -------------------------------------------------------------------------
 
 % *****  OLD VALUES  ******
 % INI.X0 = 458400;
